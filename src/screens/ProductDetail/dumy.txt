@@ -1,0 +1,100 @@
+import React, { useEffect, useState } from "react";
+import { useLocation, Location } from "react-router-dom";
+import Card from "../../component/Card";
+import NavBar from "../../component/NavigationBar";
+import { getRequest } from "../../manager/ApiManager";
+import Endpoints from "../../manager/Endpoints"
+
+
+
+const ProductDetailScreen = () => {
+  const location = useLocation()
+  const { selectedProductId } = location.state
+
+  const [state, setState] = useState({
+    product: {},
+  })
+  const { product } = state
+  const getProductDetail = () => {
+    getRequest(`${Endpoints.PRODUCT_LIST}/${selectedProductId}`, ((res) => {
+      console.log("getProductList", res);
+      const { status, data } = res
+      console.log("status", data);
+      if (status === 200) {
+        setState((pre) => ({ ...pre, product: data }))
+      }
+
+    }), (error) => {
+      console.log("getProductList", error);
+    })
+  }
+
+  useEffect(() => {
+    getProductDetail()
+  }, [])
+  console.log("state[[']", state);
+  const renderProductDetailUi = () => {
+    return (
+      <div className="primaryContentContainer">
+        <img
+          src={product.image}
+          height='400px'
+          // width='900px'
+          style={{ alignSelf: 'center', backgroundColor: '#ccc', }}
+
+        />
+
+
+        {/* <div style={{ backgroundColor: 'blue', display: 'flex', justifyContent: 'center', }}>
+          <img
+            src={product.image}
+            height='400px'
+            // width='200px'
+            style={{ alignSelf: 'center', }}
+
+          />
+        </div> */}
+
+        <div className="secondaryContentContainer">
+          <h4 style={{ textDecoration: 'underline', }}>{product.title}</h4>
+          <div className="priceCategorydiv">
+            <p>{product.category}</p>
+            <p style={{ fontWeight: 'bold' }}>Rs:{product.price}</p>
+          </div>
+          <div className="ratingdiv">
+            <p className="ratingStarP"> ***** </p>
+            <p>{product.rating?.rate}</p>
+          </div>
+
+          <div style={{ padding: '10px' }}>
+            <p>{product.description}</p>
+          </div>
+
+
+        </div>
+        {/* <div style={{ backgroundColor: 'green',  width:'400px', padding:'10px'}}>
+          <p>{product.title}</p>
+          <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-between' }}>
+            <h3>{product.category}</h3>
+            <h3>{'sks'}</h3>
+          </div>
+
+
+        </div> */}
+
+      </div>
+
+    )
+  }
+  return (
+
+    <>
+      <NavBar />
+      <h3 style={{ alignSelf: 'center', textAlign: 'center' }}>Product Detail</h3>
+      {renderProductDetailUi()}
+
+    </>
+
+  )
+}
+export default ProductDetailScreen

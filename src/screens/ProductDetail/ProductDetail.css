@@ -1,0 +1,33 @@
+.primaryContentContainer {
+
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    border-color: white;
+    justify-content: center;
+}
+.secondaryContentContainer {
+    margin: 10px;
+    padding: 20px;
+    width: 600px;
+    align-self: center;
+    background-color: #ccc;
+}
+
+.priceCategorydiv {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.ratingdiv {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ratingStarP {
+    color: green;
+    font-size: 30px;
+}

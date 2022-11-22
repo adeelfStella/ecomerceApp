@@ -7,7 +7,60 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2 {
+  margin-left: 10px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.polaroid {
+
+  width:  20%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  height: max-content;
+}
+
+.container {
+ 
+padding: 20px;
+}
+p{
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding: 10px,
+}
+
+.prodctDesc {
+  /* white-space: nowrap; 
+  height: 90px;
+  overflow-x: hidden;
+  text-overflow: ellipsis; 
+  border: 1px solid #000000; */
+
+  width: 200px;
+  height: max-content;
+  line-height: 20px;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 5;
+  -moz-line-clamp: 5;
+  -ms-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+  margin: 10px;
 }
